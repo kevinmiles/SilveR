@@ -13,15 +13,25 @@ See deployment for notes on how to deploy the project on a live system.
 SilveR is a self-hosted web app written in .net core, designed to run locally on Windows, Linux and macOS.
 
 Releases can be produced through the following dotnet commands:
+
 dotnet publish -c Release -r win-x64
+
 dotnet publish -c Release -r linux-x64
+
 dotnet publish -c Release -r osx-x64 
 
 For windows you will need to xcopy the R-3.5.1 folder to the root of the publish output folder. For linux and mac you will need to provide your own R install (We need help here to work out how to add a specific version of R into the build process)
 
 To run the published system run SilveR.exe. A console window will appear stating that the system is listening on http://localhost:5000. Open your browser and navigate to that location.
 
+To run through an analysis:
+1) Click on the Data tab and import your csv or xlsx file (selecting a worksheet if necessary)
+2) Click on the Statistics tab select an analysis
+3) Pick a dataset to analyse
+4) Select some column(s) from the data to produce results for Submit
+5) The dataset and selected columns will be passed to the R engine (actually rscript.exe) and results produced
 
+You can open the Analysis tab to see your previous results, reanalyse to see the settings selected and re-submit your analysis.
 
 
 ## Built With
