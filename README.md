@@ -4,9 +4,7 @@ SilveR is a cross platform (Windows, Linux & macOS) statistical analysis system 
 
 ## Getting Started
 
-Clone the project, open in Visual Studio, run the tests and then run/deploy. The repo contains a stripped down version of R 3.5.1 so that it should produce analyes straight away. You can always point the system at your own R setup (YMMV!)
-
-See deployment for notes on how to deploy the project on a live system.
+Clone the project, open in Visual Studio, optionally run the tests, and then debug or publish. The repo contains a stripped down version of R 3.5.1 so that it should produce analyses straight away. You can always point the system at your own R setup (YMMV!)
 
 ### Installing
 
@@ -20,7 +18,7 @@ dotnet publish -c Release -r linux-x64
 
 dotnet publish -c Release -r osx-x64 
 
-For windows you will need to xcopy the R-3.5.1 folder to the root of the publish output folder. For linux and mac you will need to provide your own R install (We need help here to work out how to add a specific version of R into the build process)
+For windows you will need to xcopy the R-3.5.1 folder to the root of the publish output folder. For linux and mac you will need to provide your own R install (We need help here to work out how to add a specific version of R into the build process).
 
 To run the published system run SilveR.exe. A console window will appear stating that the system is listening on http://localhost:5000. Open your browser and navigate to that location.
 
