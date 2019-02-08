@@ -327,14 +327,14 @@ for (i in 1:(resplength-1)) {
 	for (j in (i+1):resplength) {
 		correlationTable[k,1]=id
 		id=id+1
-		statdata$x = eval(parse(text = paste("statdata$",resplist[i])))
-		statdata$y = eval(parse(text = paste("statdata$",resplist[j])))
+		statdata$x_IVS_ = eval(parse(text = paste("statdata$",resplist[i])))
+		statdata$y_IVS_ = eval(parse(text = paste("statdata$",resplist[j])))
 
 		# calculating n
-		statdata$x = eval(parse(text = paste("statdata$",resplist[i])))
-		statdata$y = eval(parse(text = paste("statdata$",resplist[j])))
-		statdata$xy = statdata$x + statdata$y
-		testz<-na.omit(statdata$xy)
+		statdata$x_IVS_ = eval(parse(text = paste("statdata$",resplist[i])))
+		statdata$y_IVS_ = eval(parse(text = paste("statdata$",resplist[j])))
+		statdata$xy_IVS_ = statdata$x_IVS_ + statdata$y_IVS_
+		testz<-na.omit(statdata$xy_IVS_)
 		pairn<-length(testz)
 
 		if (pairn<50 && method == "Kendall") {
@@ -346,7 +346,7 @@ for (i in 1:(resplength-1)) {
 		}
 
 		if (pairn>=3) {
-			correlation<-cor.test(~x+y, data=statdata, alternative=hypothesis2, method = method2, conf.level=(1-CIval), exact = FALSE)
+			correlation<-cor.test(~x_IVS_+y_IVS_, data=statdata, alternative=hypothesis2, method = method2, conf.level=(1-CIval), exact = FALSE)
 			correlationTable[k,2]=resplist[i]
 			correlationTable[k,3]=" vs. "
 			correlationTable[k,4]=resplist[j]
@@ -360,7 +360,7 @@ for (i in 1:(resplength-1)) {
 				l=l+1
 			}
 	
-			myvars <- c("x", "y")
+			myvars <- c("x_IVS_", "y_IVS_")
 			testdata2 <- statdata[myvars]
 			testdata2 <- na.omit(testdata2)
 		
@@ -702,10 +702,10 @@ for ( p in 1:length) {
 		for (j in (i+1):resplength) {
 			correlationTable[id,1]=id
 			id=id+1
-			testdata$x = eval(parse(text = paste("testdata$",resplist[i])))
-			testdata$y = eval(parse(text = paste("testdata$",resplist[j])))
-			testdata$xy = testdata$x + testdata$y
-			testz<-na.omit(testdata$xy)
+			testdata$x_IVS_ = eval(parse(text = paste("testdata$",resplist[i])))
+			testdata$y_IVS_ = eval(parse(text = paste("testdata$",resplist[j])))
+			testdata$xy_IVS_ = testdata$x_IVS_ + testdata$y_IVS_
+			testz<-na.omit(testdata$xy_IVS_)
 
 			pairn<-length(testz)
 			if (length(testz)<50 && method == "Kendall") {
@@ -721,8 +721,8 @@ for ( p in 1:length) {
 			if(length(testz)>2) {
 
 				#STB Aug 2011 - removing lines with infinite slope
-				if(length(unique(testdata$x))!=1 && length(unique(testdata$y))!=1) {
-				correlation<-cor.test(~x+y, data=testdata, alternative=hypothesis2, method = method2, conf.level=(1-CIval), exact = FALSE)
+				if(length(unique(testdata$x_IVS_))!=1 && length(unique(testdata$y_IVS_))!=1) {
+				correlation<-cor.test(~x_IVS_+y_IVS_, data=testdata, alternative=hypothesis2, method = method2, conf.level=(1-CIval), exact = FALSE)
 				} else {
 					correlation$estimate<-1000
 					correlation$statistic<-1000
@@ -748,7 +748,7 @@ for ( p in 1:length) {
 					}
 				}
 	
-				myvars <- c("x", "y")
+				myvars <- c("x_IVS_", "y_IVS_")
 				testdata2 <- testdata[myvars]
 				testdata2 <- na.omit(testdata2)
 
