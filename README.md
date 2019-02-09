@@ -8,7 +8,7 @@ Clone the project, open in Visual Studio, optionally run the tests, and then deb
 
 ### Current Build
 
-https://travis-ci.com/robalexclark/SilveR.svg?branch=master
+[![Build Status](https://travis-ci.com/robalexclark/SilveR.svg?branch=master)](https://travis-ci.com/robalexclark/SilveR)
 
 ### Installing
 

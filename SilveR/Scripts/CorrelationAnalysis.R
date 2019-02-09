@@ -44,9 +44,11 @@ HTMLCSS(CSSfile = cssFile)
 
 #===================================================================================================================
 #Parameter setup
+statdataprint<-statdata
 
 #Graphical parameters
 graphdata<-statdata
+
 Labelz_IVS_ <- "N"
 ReferenceLine <- "NULL"
 
@@ -911,24 +913,12 @@ HTML(Ref_list$PROTO_ref, align="left")
 if (showdataset=="Y") {
 	HTML.title("Analysis dataset", HR=2, align="left")
 
-	statdata2<-subset(statdata, select = -c(catfact))
-	statdata3<-subset(statdata2, select = -c(i))
-	statdata4<-subset(statdata3, select = -c(j))
-        observ <- data.frame(c(1:dim(statdata4)[1]))
-        colnames(observ) <- c("Observation")
+	statdataprint2<-subset(statdataprint, select = -c(catfact))
 
-	if (ByCategoriesAndOverall == "Y"|| ((firstCat == "NULL"  &&  secondCat == "NULL" &&  thirdCat == "NULL"  &&  fourthCat == "NULL") && ByCategoriesAndOverall == "N"))
-	{ 
-		statdata5<-subset(statdata4, select = -c(x))
-		statdata6<-subset(statdata5, select = -c(y))
-		statdata7<-subset(statdata6, select = -c(ij))
-		statdata8<-subset(statdata7, select = -c(xy))
-                statdata9 <- cbind(observ, statdata8)
-		HTML(statdata9, classfirstline="second", align="left", row.names = "FALSE")
-	} else {
-                statdata10 <- cbind(observ, statdata4)
-		HTML(statdata10, classfirstline="second", align="left", row.names = "FALSE")
-		}
+        observ <- data.frame(c(1:dim(statdataprint2)[1]))
+        colnames(observ) <- c("Observation")
+        statdataprint2 <- cbind(observ, statdataprint2)
+	HTML(statdataprint2, classfirstline="second", align="left", row.names = "FALSE")
 }
 
 #===================================================================================================================

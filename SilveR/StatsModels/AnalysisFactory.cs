@@ -30,7 +30,7 @@ namespace SilveR.StatsModels
                 case "PairedTTestAnalysis":
                     model = new PairedTTestAnalysisModel(dataset);
                     break;
-                case "UnpairedTestAnalysis":
+                case "UnpairedTTestAnalysis":
                     model = new UnpairedTTestAnalysisModel(dataset);
                     break;
                 case "OneSampleTTestAnalysis":

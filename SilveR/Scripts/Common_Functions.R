@@ -1,18 +1,8 @@
 ﻿#Software branding
-
-#Display labels on scatterplot (needs argument)
 branding <- "InVivoStat"
-scatterlabels <- "N"
 
 #Display arguments
 Diplayargs <- "Y"
-
-
-#Disply lines on lsmeans
-DisplayLSMeanslines <- "N"
-
-#Disply lines on lsmeans
-DisplaySEMlines <- "N"
 
 #===================================================================================================================
 #Import Graphical parameters from file
@@ -31,7 +21,7 @@ suppressWarnings(library(grid))
 #===================================================================================================================
 #User option parameters
 #===================================================================================================================
-grparanum = read.table(paste(getwd(),"/UserOptions.txt", sep=""), skip = 19, sep=" ", nrows = 22)
+grparanum = read.table(paste(getwd(),"/UserOptions.txt", sep=""), skip = 22, sep=" ", nrows = 22)
 grparatext = read.table(paste(getwd(),"/UserOptions.txt", sep=""))
 
 #Line types used - solid, blank and dashed
@@ -66,8 +56,8 @@ grparatext = read.table(paste(getwd(),"/UserOptions.txt", sep=""))
 	Palette_set<- paste(grparatext$V2[13],sep="")
 
 #Output dataset
-	showdataset <- paste(grparatext$V2[14],sep="")
-
+#	showdataset <- paste(grparatext$V2[14],sep="")
+showdataset <- "Y"
 #pdf output
 	pdfout<- paste(grparatext$V2[15],sep="")
 
@@ -82,6 +72,15 @@ grparatext = read.table(paste(getwd(),"/UserOptions.txt", sep=""))
 
 #Display covariate interaction tests 
 	AssessCovariateInteractions<- paste(grparatext$V2[19],sep="")
+
+#Display labels on scatterplot (needs argument)
+	scatterlabels <- paste(grparatext$V2[20],sep="")
+
+#Disply lines on lsmeans
+	DisplayLSMeanslines <- paste(grparatext$V2[21],sep="")
+
+#Disply lines on lsmeans
+	DisplaySEMlines <- paste(grparatext$V2[22],sep="")
 
 #Font size for the main title
 	Title_size  <- as.numeric(grparanum$V2[1])
